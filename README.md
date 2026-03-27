@@ -1,18 +1,39 @@
-# Forms Dashboard (Next.js 15)
+# Forms Dashboard
 
-Mini app for managing forms with role-based access, SSR list pages, validation and REST API route handlers.
+Small Next.js app for managing forms with role-based access and basic CRUD.
 
-## Stack
+## Live Demo
+
+- [https://forms-dashboard-two.vercel.app/](https://forms-dashboard-two.vercel.app/)
+
+## Tech Stack
 
 - Next.js 15 (App Router) + TypeScript
 - Tailwind CSS
-- React Hook Form + Zod (shared schema)
-- Zustand (auth + toasts)
+- React Hook Form + Zod
+- Zustand
+- Route Handlers (`/api/*`)
 - Supabase (Postgres)
 
-## Run locally
+## What I built
 
-1. Install dependencies:
+- Public landing page `/` (SSG) with metadata, OG/Twitter tags, and `next/image`
+- Login page `/login` (email + role select: Individual/Admin)
+- Cookie-based route protection via middleware for `/dashboard` and `/forms/*`
+- SSR forms list page with:
+  - status filter (`draft`, `active`, `archived`)
+  - latest-first sorting by `updatedAt`
+  - loading state + fallback state
+- Admin-only CRUD:
+  - `POST /api/forms`
+  - `PUT /api/forms/:id`
+  - `DELETE /api/forms/:id`
+- Shared validation schema (same Zod schema on client and server)
+- Toast notifications via Zustand
+
+## Local Setup
+
+1. Install packages:
    ```bash
    npm install
    ```
@@ -20,29 +41,15 @@ Mini app for managing forms with role-based access, SSR list pages, validation a
    ```bash
    cp .env.example .env.local
    ```
-3. Add your Supabase project credentials:
+3. Add credentials in `.env.local`:
    - `SUPABASE_URL`
    - `SUPABASE_SERVICE_ROLE_KEY`
-4. Start app:
+4. Run:
    ```bash
    npm run dev
    ```
 
-## What is implemented
-
-- Public landing page `/` (SSG) with metadata + OG/Twitter + `next/image`.
-- Login page `/login` with email + role (`Individual`/`Admin`) saved in cookies and Zustand.
-- Middleware protection for `/dashboard` and `/forms/*`.
-- Forms list `/forms` rendered on server (SSR), filter by status, sorted by latest update.
-- Admin CRUD:
-  - `/forms/new`
-  - `/forms/[id]`
-  - POST/PUT/DELETE via route handlers
-- Shared validation schema (`Zod`) used in both UI form and API.
-- Loading and error UI for forms list.
-- Basic accessible form fields (`label`, focus styles, inline errors).
-
-## API
+## API Endpoints
 
 - `GET /api/forms`
 - `GET /api/forms/:id`
@@ -52,12 +59,11 @@ Mini app for managing forms with role-based access, SSR list pages, validation a
 
 ## Notes
 
-- First API read seeds 3 example records automatically into Supabase if table is empty.
-- Role check is enforced in both UI and API.
+- If the forms table is empty, the app seeds 3 records on first API request.
+- Role checks are enforced in both UI and API handlers.
 
-### Supabase table schema
+### Supabase table (`forms`)
 
-Create table `forms` with columns:
 - `id` text primary key
 - `title` text not null
 - `description` text null
