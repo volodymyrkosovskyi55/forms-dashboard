@@ -46,32 +46,32 @@ export default async function FormsPage({
         <div className="flex items-center gap-2">
           <Link
             href="/forms"
-            className="rounded-md border border-slate-300 px-3 py-2 text-sm"
+            className="rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:hover:bg-slate-900"
           >
             All
           </Link>
           <Link
             href="/forms?status=draft"
-            className="rounded-md border border-slate-300 px-3 py-2 text-sm"
+            className="rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:hover:bg-slate-900"
           >
             Draft
           </Link>
           <Link
             href="/forms?status=active"
-            className="rounded-md border border-slate-300 px-3 py-2 text-sm"
+            className="rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:hover:bg-slate-900"
           >
             Active
           </Link>
           <Link
             href="/forms?status=archived"
-            className="rounded-md border border-slate-300 px-3 py-2 text-sm"
+            className="rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:hover:bg-slate-900"
           >
             Archived
           </Link>
           {isAdmin ? (
             <Link
               href="/forms/new"
-              className="rounded-md bg-slate-900 px-3 py-2 text-sm font-medium text-white"
+              className="rounded-md bg-slate-900 px-3 py-2 text-sm font-medium text-white dark:bg-slate-100 dark:text-slate-900"
             >
               New form
             </Link>
@@ -80,24 +80,24 @@ export default async function FormsPage({
       </div>
 
       {hasLoadError ? (
-        <div className="rounded-xl border border-amber-200 bg-amber-50 p-5">
-          <p className="text-sm font-medium text-amber-800">
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900/60 dark:bg-amber-950/40">
+          <p className="text-sm font-medium text-amber-800 dark:text-amber-300">
             Could not load forms.
           </p>
-          <p className="mt-1 text-sm text-amber-700">
+          <p className="mt-1 text-sm text-amber-700 dark:text-amber-400">
             Check your Supabase setup and try again.
           </p>
           <Link
             href="/forms"
-            className="mt-3 inline-flex rounded-md bg-amber-600 px-3 py-2 text-sm font-medium text-white hover:bg-amber-700"
+            className="mt-3 inline-flex rounded-md bg-amber-600 px-3 py-2 text-sm font-medium text-white hover:bg-amber-700 dark:bg-amber-500 dark:text-slate-900 dark:hover:bg-amber-400"
           >
             Retry
           </Link>
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-xl bg-white shadow-sm">
+        <div className="overflow-x-auto rounded-xl bg-white shadow-sm dark:bg-slate-900 dark:shadow-none">
           <table className="min-w-full text-left text-sm">
-            <thead className="border-b border-slate-200 bg-slate-50">
+            <thead className="border-b border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800">
               <tr>
                 <th className="px-4 py-3 font-semibold">Title</th>
                 <th className="px-4 py-3 font-semibold">Status</th>
@@ -107,7 +107,7 @@ export default async function FormsPage({
             </thead>
             <tbody>
               {forms.map((form) => (
-                <tr key={form.id} className="border-b border-slate-100">
+                <tr key={form.id} className="border-b border-slate-100 dark:border-slate-800">
                   <td className="px-4 py-3">{form.title}</td>
                   <td className="px-4 py-3 capitalize">{form.status}</td>
                   <td className="px-4 py-3">
@@ -116,20 +116,23 @@ export default async function FormsPage({
                   <td className="px-4 py-3">
                     {isAdmin ? (
                       <Link
-                        className="text-sky-700 hover:underline"
+                        className="text-sky-700 hover:underline dark:text-sky-400"
                         href={`/forms/${form.id}`}
                       >
                         Edit
                       </Link>
                     ) : (
-                      <span className="text-slate-400">Read-only</span>
+                      <span className="text-slate-400 dark:text-slate-500">Read-only</span>
                     )}
                   </td>
                 </tr>
               ))}
               {forms.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="px-4 py-6 text-center text-slate-500">
+                  <td
+                    colSpan={4}
+                    className="px-4 py-6 text-center text-slate-500 dark:text-slate-400"
+                  >
                     No forms for the selected filter.
                   </td>
                 </tr>

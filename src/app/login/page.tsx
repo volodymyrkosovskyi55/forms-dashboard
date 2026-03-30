@@ -30,15 +30,15 @@ export default function LoginPage() {
   return (
     <>
       <ToastContainer />
-      <section className="mx-auto max-w-md rounded-xl bg-white p-6 shadow-sm">
+      <section className="mx-auto max-w-md rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900 dark:shadow-none">
         <h1 className="mb-1 text-xl font-semibold">Login</h1>
-        <p className="mb-6 text-sm text-slate-600">
+        <p className="mb-6 text-sm text-slate-600 dark:text-slate-300">
           Select a role to test protected routes.
         </p>
 
         <form onSubmit={onSubmit} className="space-y-4">
           <div className="space-y-1">
-            <label htmlFor="email" className="text-sm font-medium text-slate-700">
+            <label htmlFor="email" className="text-sm font-medium text-slate-700 dark:text-slate-300">
               Email
             </label>
             <input
@@ -50,12 +50,12 @@ export default function LoginPage() {
                 setEmail(event.target.value);
                 setError("");
               }}
-              className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"
+              className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus-visible:outline-slate-100"
             />
           </div>
 
           <div className="space-y-1">
-            <label htmlFor="role" className="text-sm font-medium text-slate-700">
+            <label htmlFor="role" className="text-sm font-medium text-slate-700 dark:text-slate-300">
               Role
             </label>
             <select
@@ -65,7 +65,7 @@ export default function LoginPage() {
               onChange={(event) =>
                 setRole(event.target.value as "individual" | "admin")
               }
-              className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"
+              className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus-visible:outline-slate-100"
             >
               <option value="individual">Individual</option>
               <option value="admin">Admin</option>
@@ -76,7 +76,7 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700"
+            className="w-full rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-300"
           >
             Login
           </button>

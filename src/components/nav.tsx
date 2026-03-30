@@ -22,35 +22,35 @@ export const AppNav = () => {
   }, []);
 
   return (
-    <header className="border-b border-black/10 bg-white">
+    <header className="border-b border-black/10 bg-white dark:border-white/10 dark:bg-slate-900">
       <nav className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-3">
-        <Link href="/" className="font-semibold text-slate-900">
+        <Link href="/" className="font-semibold text-slate-900 dark:text-slate-100">
           Forms Dashboard
         </Link>
         <div className="flex items-center gap-3 text-sm">
           {isLoggedIn ? (
             <>
-              <Link className="rounded px-2 py-1 hover:bg-slate-100" href="/">
+              <Link className="rounded px-2 py-1 hover:bg-slate-100 dark:hover:bg-slate-800" href="/">
                 Home
               </Link>
-              <Link className="rounded px-2 py-1 hover:bg-slate-100" href="/forms">
+              <Link className="rounded px-2 py-1 hover:bg-slate-100 dark:hover:bg-slate-800" href="/forms">
                 Forms
               </Link>
               <Link
-                className="rounded px-2 py-1 hover:bg-slate-100"
+                className="rounded px-2 py-1 hover:bg-slate-100 dark:hover:bg-slate-800"
                 href="/dashboard"
               >
                 Dashboard
               </Link>
               <a
-                className="rounded bg-slate-900 px-3 py-1 text-white hover:bg-slate-700"
+                className="rounded bg-slate-900 px-3 py-1 text-white hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-300"
                 href="/logout"
               >
                 Logout
               </a>
             </>
           ) : (
-            <Link className="rounded px-2 py-1 hover:bg-slate-100" href="/login">
+            <Link className="rounded px-2 py-1 hover:bg-slate-100 dark:hover:bg-slate-800" href="/login">
               Login
             </Link>
           )}

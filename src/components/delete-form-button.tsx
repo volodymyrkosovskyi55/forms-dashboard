@@ -32,7 +32,7 @@ export const DeleteFormButton = ({ id }: Props) => {
       type="button"
       onClick={onDelete}
       disabled={isDeleting}
-      className="rounded-md border border-rose-300 px-3 py-2 text-sm font-medium text-rose-700 hover:bg-rose-50 disabled:opacity-60"
+      className="rounded-md border border-rose-300 px-3 py-2 text-sm font-medium text-rose-700 hover:bg-rose-50 disabled:opacity-60 dark:border-rose-900/70 dark:text-rose-300 dark:hover:bg-rose-950/40"
     >
       {isDeleting ? "Deleting..." : "Delete form"}
     </button>

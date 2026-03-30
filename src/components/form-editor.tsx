@@ -59,7 +59,10 @@ export const FormEditor = ({ mode, initialData }: Props) => {
   return (
     <>
       <ToastContainer />
-      <form onSubmit={onSubmit} className="space-y-4 rounded-xl bg-white p-6 shadow-sm">
+      <form
+        onSubmit={onSubmit}
+        className="space-y-4 rounded-xl bg-white p-6 shadow-sm dark:bg-slate-900 dark:shadow-none"
+      >
         <div className="space-y-1">
           <label htmlFor="title" className="text-sm font-medium">
             Title
@@ -67,7 +70,7 @@ export const FormEditor = ({ mode, initialData }: Props) => {
           <input
             id="title"
             {...register("title")}
-            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
           />
           {errors.title ? (
             <p className="text-sm text-rose-600">{errors.title.message}</p>
@@ -81,7 +84,7 @@ export const FormEditor = ({ mode, initialData }: Props) => {
           <textarea
             id="description"
             {...register("description")}
-            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
             rows={4}
           />
         </div>
@@ -94,7 +97,7 @@ export const FormEditor = ({ mode, initialData }: Props) => {
             id="fieldsCount"
             type="number"
             {...register("fieldsCount", { valueAsNumber: true })}
-            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
           />
           {errors.fieldsCount ? (
             <p className="text-sm text-rose-600">{errors.fieldsCount.message}</p>
@@ -108,7 +111,7 @@ export const FormEditor = ({ mode, initialData }: Props) => {
           <select
             id="status"
             {...register("status")}
-            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
           >
             <option value="draft">Draft</option>
             <option value="active">Active</option>
@@ -122,7 +125,7 @@ export const FormEditor = ({ mode, initialData }: Props) => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700 disabled:opacity-60"
+          className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700 disabled:opacity-60 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-300"
         >
           {isSubmitting
             ? "Saving..."
